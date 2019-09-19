@@ -1,0 +1,9 @@
+Here is software for OUBS ihmevekotin, which contains atleast tetris and
+clock.
+
+Compile using winavr and program using avrdude. Commands:
+
+ make
+ make program
+
+
