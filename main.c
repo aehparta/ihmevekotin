@@ -51,8 +51,6 @@ COMMAND cmds[] =
 	{ "mode", smode },
 	{ "tscore", tscore },
 	{ "playl", play_logon },
-	{ "get:config", probe_get_config },
-	{ "A", date },
 	{ 0, 0 }
 };
 
@@ -143,7 +141,7 @@ void date(char *x)
 		sei();
 
 		/* Print date. */
-		printf("%i%i%i%i-%i%i-%i%iT%i%i:%i%i:%i%i\n",
+		printf("%i%i%i%i-%i%i-%i%i %i%i:%i%i:%i%i\n",
 		       c >> 4, c & 0xf, y >> 4, y & 0xf,
 		       m >> 4, m & 0xf,
 		       d >> 4, d & 0xf,
@@ -322,6 +320,9 @@ int main(void)
 
 	/* Initialize USART as default input/output. */
 	stdin = stdout = fdevopen(USART_Transmit, USART_Receive);
+
+	/* initialize probe interface */
+	probe_init();
 
 	/* Display login. */
 	login();
